@@ -58,7 +58,7 @@ class ServoController:
     def _convert_to_duty_cycle(self, metric, metric_range):
         metric_ratio = (metric - metric_range[0]) / (metric_range[1] - metric_range[0])
         scaled_value = metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
-        return self._clamp(scaled_value, DUTY_CYCLE_RANGE[0], DUTY_CYCLE_RANGE[1])
+        return self._clamp(scaled_value, DUTY_CYCLE_RANGE[1], DUTY_CYCLE_RANGE[0])
 
     def _clamp(self, value, min_value, max_value):
         return max(min(value, max_value), min_value)
