@@ -24,7 +24,7 @@ class ConditionFetcher:
         low, high = raw_surf_height.split('-')
         avg = (int(high) + int(low)) / 2
         return avg
-    
+
     def translate_surf_quality(self, surf_quality):
         return [
             None,
