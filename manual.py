@@ -8,7 +8,7 @@ logging.info('Running surf poster manual update')
 servo_controller = ServoController()
 
 logging.info('Reading conditions')
-surf_height, water_temp, surf_quality = [int(arg) for arg in sys.argv[1:]]
+surf_height, water_temp, surf_quality = [float(arg) for arg in sys.argv[1:]]
 
 logging.info("Surf height duty cycle: %s" % surf_height)
 logging.info("Water temp duty:        %s" % water_temp)
