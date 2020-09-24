@@ -60,5 +60,5 @@ class ServoController:
         scaled_value = metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
         return self._clamp(scaled_value, DUTY_CYCLE_RANGE[0], DUTY_CYCLE_RANGE[1])
 
-    def _clamp(self, value, min, max):
-        return max(min(value, max), min)
+    def _clamp(self, value, min_value, max_value):
+        return max(min(value, max_value), min_value)
