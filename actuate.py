@@ -41,14 +41,15 @@ class ServoController:
         water_temp_duty = self._convert_to_duty_cycle(water_temp, WATER_TEMP_RANGE)
         surf_quality_duty = self._convert_to_duty_cycle(surf_quality, SURF_QUALITY_RANGE)
 
-        logging.info("Surf height duty cycle: %s" % surf_height_duty)
-        logging.info("Water temp duty:        %s" % water_temp_duty)
-        logging.info("Surf quality duty:      %s" % surf_quality_duty)
+        logging.info("Surf height duty:  %s" % surf_height_duty)
+        logging.info("Water temp duty:   %s" % water_temp_duty)
+        logging.info("Surf quality duty: %s" % surf_quality_duty)
 
         self.surf_height_pin.ChangeDutyCycle(surf_height_duty)
         self.water_temp_pin.ChangeDutyCycle(water_temp_duty)
         self.surf_quality_pin.ChangeDutyCycle(surf_quality_duty)
         time.sleep(1)
+
         self.surf_height_pin.ChangeDutyCycle(0)
         self.water_temp_pin.ChangeDutyCycle(0)
         self.surf_quality_pin.ChangeDutyCycle(0)
@@ -56,4 +57,8 @@ class ServoController:
 
     def _convert_to_duty_cycle(self, metric, metric_range):
         metric_ratio = (metric - metric_range[0]) / (metric_range[1] - metric_range[0])
-        return metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
+        scaled_value = metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
+        return self._clamp(scaled_value, DUTY_CYCLE_RANGE[0], DUTY_CYCLE_RANGE[1])
+
+    def _clamp(self, value, min, max):
+        return max(min(value, max), min)
