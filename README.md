@@ -16,3 +16,9 @@ For some reason it took 10s+ to get a virtualenv setup with pipenv, so I ditched
 - Hook up your servo wires according to the pin numbers in `actuate.py`
 - Run the script with `python main.py` to get live data OR
 `python manual.py <surf_height> <water_temp> <surf_quality>` to put in your own data
+
+## Chron
+Add this with `crontab -e`:
+```
+0 * * * * cd /home/elliot/code/surf-poster && python main.py >> /home/elliot/logs/surf-poster.log 2>&1
+```
