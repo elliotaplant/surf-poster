@@ -41,9 +41,9 @@ class ServoController:
         water_temp_duty = self._convert_to_duty_cycle(water_temp, WATER_TEMP_RANGE)
         surf_quality_duty = self._convert_to_duty_cycle(surf_quality, SURF_QUALITY_RANGE)
 
-        logging.info("Surf height duty cycle: %(surf_height_duty)s")
-        logging.info("Water temp duty:        %(water_temp_duty)s")
-        logging.info("Surf quality duty:      %(surf_quality_duty)s")
+        logging.info("Surf height duty cycle: %s" % surf_height_duty)
+        logging.info("Water temp duty:        %s" % water_temp_duty)
+        logging.info("Surf quality duty:      %s" % surf_quality_duty)
 
         self.surf_height_pin.ChangeDutyCycle(surf_height_duty)
         self.water_temp_pin.ChangeDutyCycle(water_temp_duty)
