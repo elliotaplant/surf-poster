@@ -22,7 +22,7 @@ class ConditionFetcher:
     # Expected format is %d-%d, eg 1-2
     def parse_surf_height(self, raw_surf_height):
         low, high = raw_surf_height.split('-')
-        avg = (int(high) + int(low)) / 2
+        avg = float(int(high) + int(low)) / 2.0
         return avg
 
     def translate_surf_quality(self, surf_quality):

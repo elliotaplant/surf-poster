@@ -56,7 +56,7 @@ class ServoController:
         time.sleep(1)
 
     def _convert_to_duty_cycle(self, metric, metric_range):
-        metric_ratio = (metric - metric_range[0]) / (metric_range[1] - metric_range[0])
+        metric_ratio = float(metric - metric_range[0]) / float(metric_range[1] - metric_range[0])
         scaled_value = metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
         return self._clamp(scaled_value, DUTY_CYCLE_RANGE[1], DUTY_CYCLE_RANGE[0])
 
