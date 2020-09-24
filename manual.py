@@ -8,10 +8,10 @@ logging.info('Running surf poster manual update')
 servo_controller = ServoController()
 
 logging.info('Reading conditions')
-surf_height, water_temp, wind_speed = [int(arg) for arg in sys.argv[1:]]
+surf_height, water_temp, surf_quality = [int(arg) for arg in sys.argv[1:]]
 
-logging.info(f"Surf height: {surf_height}, Wind speed: {wind_speed}, Water temp {water_temp}")
+logging.info(f"Surf height: {surf_height}, Water temp {water_temp}, Surf quality: {surf_quality}")
 
 servo_controller.setup()
-servo_controller.set_to_angles(surf_height, water_temp, wind_speed)
+servo_controller.set_to_angles(surf_height, water_temp, surf_quality)
 servo_controller.stop()
