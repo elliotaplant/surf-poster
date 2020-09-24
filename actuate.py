@@ -2,15 +2,15 @@ import RPi.GPIO as GPIO
 import logging
 import time
 
-SURF_HEIGHT_PIN_NUMBER = 20
-WATER_TEMP_PIN_NUMBER = 16
-SURF_QUALITY_PIN_NUMBER = 21
+SURF_HEIGHT_PIN_NUMBER = 21
+WATER_TEMP_PIN_NUMBER = 20
+SURF_QUALITY_PIN_NUMBER = 16
 
 SERVO_PWM_FREQUENCY = 50  # Hz
 DUTY_CYCLE_RANGE = [12.5, 2.5]
 
-SURF_HEIGHT_RANGE = [0, 6]
-WATER_TEMP_RANGE = [55, 75]
+SURF_HEIGHT_RANGE = [0, 5]
+WATER_TEMP_RANGE = [55, 80]
 SURF_QUALITY_RANGE = [1, 10]
 
 
@@ -40,16 +40,25 @@ class ServoController:
         surf_height_duty = self._convert_to_duty_cycle(surf_height, SURF_HEIGHT_RANGE)
         water_temp_duty = self._convert_to_duty_cycle(water_temp, WATER_TEMP_RANGE)
         surf_quality_duty = self._convert_to_duty_cycle(surf_quality, SURF_QUALITY_RANGE)
-        logging.info(f"Surf height duty cycle: {surf_height_duty}, Water temp duty: {water_temp_duty}, Wind speed duty: {surf_quality_duty}")
+
+        logging.info("Surf height duty:  %s" % surf_height_duty)
+        logging.info("Water temp duty:   %s" % water_temp_duty)
+        logging.info("Surf quality duty: %s" % surf_quality_duty)
+
         self.surf_height_pin.ChangeDutyCycle(surf_height_duty)
         self.water_temp_pin.ChangeDutyCycle(water_temp_duty)
         self.surf_quality_pin.ChangeDutyCycle(surf_quality_duty)
         time.sleep(1)
+
         self.surf_height_pin.ChangeDutyCycle(0)
         self.water_temp_pin.ChangeDutyCycle(0)
         self.surf_quality_pin.ChangeDutyCycle(0)
         time.sleep(1)
 
     def _convert_to_duty_cycle(self, metric, metric_range):
-        metric_ratio = (metric - metric_range[0]) / (metric_range[1] - metric_range[0])
-        return metric_ratio * (DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + DUTY_CYCLE_RANGE[0]
+        metric_ratio = float(metric - metric_range[0]) / float(metric_range[1] - metric_range[0])
+        scaled_value = metric_ratio * float(DUTY_CYCLE_RANGE[1] - DUTY_CYCLE_RANGE[0]) + float(DUTY_CYCLE_RANGE[0])
+        return self._clamp(scaled_value, float(DUTY_CYCLE_RANGE[1]), float(DUTY_CYCLE_RANGE[0]))
+
+    def _clamp(self, value, min_value, max_value):
+        return max(min(value, max_value), min_value)
