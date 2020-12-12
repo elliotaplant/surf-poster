@@ -27,7 +27,7 @@ class ConditionFetcher:
 
     def translate_surf_quality(self, surf_quality):
         return [
-            None,
+            'REPORT COMING SOON',
             'FLAT',
             'VERY POOR',
             'POOR',
