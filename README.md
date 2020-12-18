@@ -9,10 +9,9 @@ A live updating surf poster.
 - [ ] Female/male jumper wires [$2](https://www.adafruit.com/product/1953)
 - [ ] 3 micro servos [$10](https://www.amazon.com/gp/product/B07MLR1498)
 - [ ] \>2GB flash micro card [$2](https://www.amazon.com/SanDisk-microSDHC-Memory-SDSDQ-016G-Packaging/dp/B001L1H0SC)
-- [ ] Shadow Box (I used 8x10, but it feels a bit small) [$16](https://www.amazon.com/gp/product/B0753FBX8V)
+- [ ] Shadow Box (I used 8x10, but it feels a bit small) [$32](https://smile.amazon.com/Americanflat-11x14-Shadow-Frame-Black/dp/B0753JTSPQ/ref=sr_1_5)
 - [ ] Print of your beach picture [$2](https://www.amazon.com/prints)
 - [ ] Black and white printout of above photo
-- [ ] Some wood or cardboard to mount the servos
 
 **Total: $46**
 
