@@ -13,7 +13,7 @@ class ConditionFetcher:
     def get_conditions(self, beach_name):
         beach_path = beaches.get(beach_name)
         if not beach_path:
-            raise ReferenceError('Beach ' + beach + ' not supported')
+            raise ReferenceError('Beach "%s" not supported' % beach_name)
         page = requests.get('https://www.surfline.com/surf-report/' + beaches[beach_name])
         text = page.text
 
