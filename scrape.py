@@ -27,15 +27,15 @@ class ConditionFetcher:
 
     def translate_surf_quality(self, surf_quality):
         return [
-            None,
+            'REPORT COMING SOON',
             'FLAT',
             'VERY POOR',
             'POOR',
-            'POOR to FAIR',
+            'POOR TO FAIR',
             'FAIR',
-            'FAIR to GOOD',
+            'FAIR TO GOOD',
             'GOOD',
             'VERY GOOD',
-            'GOOD to EPIC',
+            'GOOD TO EPIC',
             'EPIC'
-        ].index(surf_quality)
+        ].index(surf_quality.upper())
