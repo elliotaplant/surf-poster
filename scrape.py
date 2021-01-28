@@ -1,16 +1,20 @@
 # Fetch surf conditions from surfline's static site
 import requests
 import re
+from beaches import beaches
 
 
 class ConditionFetcher:
     def __init__(self):
         self.surf_height_selector = 'Surf height</div><span class="quiver-surf-height">(.+?)<sup>FT'
-        self.water_temp_selector = 'Tourmaline Water Temp"/>(.+?)<'
+        self.water_temp_selector = ' Water Temp"/>(.+?)<'
         self.surf_quality_selector = 'quiver-colored-condition-bar quiver-colored-condition-bar--.+?\">(.+?)</div>'
 
-    def get_conditions(self):
-        page = requests.get('https://www.surfline.com/surf-report/old-man-s-at-tourmaline/5842041f4e65fad6a77088c4')
+    def get_conditions(self, beach_name):
+        beach_path = beaches.get(beach_name)
+        if not beach_path:
+            raise ReferenceError('Beach ' + beach + ' not supported')
+        page = requests.get('https://www.surfline.com/surf-report/' + beaches[beach_name])
         text = page.text
 
         surf_height = re.search(self.surf_height_selector, text).group(1)
