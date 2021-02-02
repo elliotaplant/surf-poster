@@ -50,4 +50,5 @@ For some reason it took 10s+ to get a virtualenv setup with pipenv, so I ditched
 Add this with `crontab -e`:
 ```
 0 * * * * cd /home/elliot/code/surf-poster && python main.py >> /home/elliot/logs/surf-poster.log 2>&1
+1 0 1 * * mv /home/elliot/logs/surf-poster.log /home/elliot/logs/surf-poster.log.bak && echo -n > /home/elliot/logs/surf-poster.log 2>&1
 ```
