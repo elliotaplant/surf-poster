@@ -1,7 +1,6 @@
 # Fetch surf conditions from surfline's static site
 import requests
 import re
-from beaches import beaches
 
 
 class ConditionFetcher:
@@ -10,11 +9,8 @@ class ConditionFetcher:
         self.water_temp_selector = ' Water Temp"/>(.+?)<'
         self.surf_quality_selector = 'quiver-colored-condition-bar quiver-colored-condition-bar--.+?\">(.+?)</div>'
 
-    def get_conditions(self, beach_name):
-        beach_path = beaches.get(beach_name)
-        if not beach_path:
-            raise ReferenceError('Beach "%s" not supported' % beach_name)
-        page = requests.get('https://www.surfline.com/surf-report/' + beaches[beach_name])
+    def get_conditions(self, surfline_id):
+        page = requests.get('https://www.surfline.com/surf-report/' + surfline_id)
         text = page.text
 
         surf_height = re.search(self.surf_height_selector, text).group(1)
