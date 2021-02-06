@@ -9,11 +9,6 @@ SURF_QUALITY_PIN_NUMBER = 16
 SERVO_PWM_FREQUENCY = 50  # Hz
 DUTY_CYCLE_RANGE = [12.5, 2.5]
 
-SURF_HEIGHT_RANGE = [0, 5]
-WATER_TEMP_RANGE = [55, 80]
-SURF_QUALITY_RANGE = [1, 10]
-
-
 class ServoController:
     def setup(self):
         GPIO.setmode(GPIO.BCM)
@@ -36,10 +31,10 @@ class ServoController:
         self.surf_quality_pin.stop()
         GPIO.cleanup()
 
-    def set_to_angles(self, surf_height, water_temp, surf_quality):
-        surf_height_duty = self._convert_to_duty_cycle(surf_height, SURF_HEIGHT_RANGE)
-        water_temp_duty = self._convert_to_duty_cycle(water_temp, WATER_TEMP_RANGE)
-        surf_quality_duty = self._convert_to_duty_cycle(surf_quality, SURF_QUALITY_RANGE)
+    def set_to_angles(self, surf_height, water_temp, surf_quality, dial_range):
+        surf_height_duty = self._convert_to_duty_cycle(surf_height, dial_range['surf_height'])
+        water_temp_duty = self._convert_to_duty_cycle(water_temp, dial_range['water_temp'])
+        surf_quality_duty = self._convert_to_duty_cycle(surf_quality, dial_range['surf_quality'])
 
         logging.info('Surf height duty:  %s' % surf_height_duty)
         logging.info('Water temp duty:   %s' % water_temp_duty)
