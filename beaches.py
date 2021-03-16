@@ -17,4 +17,12 @@ beaches = {
             'surf_quality': [1, 10],
         }
     },
+    'stinson': {
+        'surfline_id': 'stinson-beach/5842041f4e65fad6a77089c1',
+        'dial_range': {
+            'surf_height': [0, 10],
+            'water_temp': [45, 70],
+            'surf_quality': [1, 10],
+        }
+    },
 }
