@@ -25,7 +25,7 @@ class ConditionFetcher:
 
         if surf_quality_match:
             surf_quality = self.translate_surf_quality(surf_quality_match.group(1))
-        else if wind_speed_match:
+        elif wind_speed_match:
             surf_quality = self.correlate_wind_height_to_surf(wind_speed_match.group(1), parsed_surf_height)
 
         return parsed_surf_height, int(water_temp), surf_quality
