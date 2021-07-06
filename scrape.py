@@ -32,6 +32,6 @@ class ConditionFetcher:
 
         temp_response = requests.get(WATER_TMP + beach['noaa_id']).text
         parsed_temp_response = json.loads(temp_response)
-        water_temp = round(float(temp_response['data'][0]['v']))
+        water_temp = int(round(float(parsed_temp_response['data'][0]['v'])))
 
         return surf_height, water_temp, surf_quality
