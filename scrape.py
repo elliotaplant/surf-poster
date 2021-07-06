@@ -5,6 +5,7 @@ import time
 
 SURFLINE_BASE_URL = 'https://services.surfline.com/kbyg/spots/forecasts'
 PARAMS = '?sds=true&spotId='
+WATER_TMP = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&product=water_temperature&datum=STND&time_zone=lst&units=english&application=surf_poster&format=json&station='
 
 
 
@@ -29,7 +30,7 @@ class ConditionFetcher:
 
         surf_quality = 2 * (surf_optimal + wind_optimal) + (surf_height / beach['dial_range']['surf_height'][1]) * 6
 
-        temp_response = requests.get(SD_WATER_TMP).text
+        temp_response = requests.get(WATER_TMP + beach['noaa_id']).text
         parsed_temp_response = json.loads(temp_response)
         water_temp = round(float(temp_response['data'][0]['v']))
 
