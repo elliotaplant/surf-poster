@@ -2,7 +2,7 @@
 
 beaches = {
     'tourmaline': {
-        'surfline_id': 'old-man-s-at-tourmaline/5842041f4e65fad6a77088c4',
+        'surfline_id': '5842041f4e65fad6a77088c4',
         'noaa_id': '9410170',
         'dial_range': {
             'surf_height': [0, 5],
@@ -11,7 +11,7 @@ beaches = {
         }
     },
     'blacks': {
-        'surfline_id': 'blacks/5842041f4e65fad6a770883b',
+        'surfline_id': '5842041f4e65fad6a770883b',
         'noaa_id': '9410170',
         'dial_range': {
             'surf_height': [0, 10],
@@ -20,7 +20,7 @@ beaches = {
         }
     },
     'stinson': {
-        'surfline_id': 'stinson-beach/5842041f4e65fad6a77089c1',
+        'surfline_id': '5842041f4e65fad6a77089c1',
         'noaa_id': '9414290',
         'dial_range': {
             'surf_height': [0, 10],
