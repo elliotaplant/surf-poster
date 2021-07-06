@@ -19,7 +19,7 @@ logging.info('Getting surf conditions for ' + beach_name)
 condition_fetcher = ConditionFetcher()
 
 logging.info('Fetching conditions')
-surf_height, water_temp, surf_quality = condition_fetcher.get_conditions(beach['surfline_id'])
+surf_height, water_temp, surf_quality = condition_fetcher.get_conditions(beach)
 
 logging.info('Surf height:  %s' % surf_height)
 logging.info('Water temp:   %s' % water_temp)
