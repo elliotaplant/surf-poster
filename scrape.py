@@ -27,7 +27,7 @@ class ConditionFetcher:
                 wind_optimal = d['optimalScore']
                 break
 
-        surf_quality = 2 * (surf_optimal + wind_optimal) + (surf_height / beach['dial_range']['surf_height'][2]) * 6
+        surf_quality = 2 * (surf_optimal + wind_optimal) + (surf_height / beach['dial_range']['surf_height'][1]) * 6
 
         temp_response = requests.get(SD_WATER_TMP).text
         parsed_temp_response = json.loads(temp_response)
