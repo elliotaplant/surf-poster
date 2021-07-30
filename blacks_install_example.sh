@@ -12,7 +12,9 @@ sudo apt install python-requests python-RPI.GPIO
 cd code
 git clone https://github.com/elliotaplant/RaspiWiFi.git
 # Run the setup (use the defaults, no passwords)
+cd RaspiWiFi
 sudo python3 initial_setup.py
+cd ..
 
 # Clone repo
 git clone https://github.com/elliotaplant/surf-poster.git
