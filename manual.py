@@ -6,7 +6,9 @@ from beaches import beaches
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 if len(sys.argv) < 5:
-    raise ReferenceError('Arguments <beach_name> <wave_height> <water_temp> <surf_quality> required. See list of beaches in beaches.py')
+    raise ReferenceError(
+        'Arguments <beach_name> <wave_height> <water_temp> <surf_quality> required. See list of beaches in beaches.py'
+    )
 
 beach_name = sys.argv[1]
 beach = beaches.get(beach_name)
